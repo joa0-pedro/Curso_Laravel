@@ -16,10 +16,15 @@ class UsersSeeders extends Seeder
      */
     public function run()
     {
-        User::create([
+        User::firstOrCreate(['email'=>'jpedroad14@gmail.com'],[
             'name'=>'João Pedro',
             'email'=>'jpedroad14@gmail.com',
             'password'=> bcrypt('12345ab'),
+        ]);
+        User::firstOrCreate(['email'=>'gikalunatic@gmail.com'],[
+            'name'=>'Giovanne Araujo',
+            'email'=>'gikalunatic@gmail.com',
+            'password'=> bcrypt('ba54321'),
         ]);
     }
 }
