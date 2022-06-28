@@ -7,12 +7,21 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "commit": "cz"
     },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+      },
     "devDependencies": {
         "axios": "^0.25",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "commitizen": "^4.2.4"
     }
 }
