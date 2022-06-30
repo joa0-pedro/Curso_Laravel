@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/users/{user}/comments/{id}',[CommentController::class, 'edit'])->name('comments.edit');
-Route::post('/users/{id}/comments',[CommentController::class, 'store'])->name('comments.store');
 Route::get('/users/{id}/comments/create',[CommentController::class, 'create'])->name('comments.create');
+Route::get('/users/{user}/comments/{id}',[CommentController::class, 'edit'])->name('comments.edit');
+Route::put('/users/comments/{id}',[CommentController::class, 'update'])->name('comments.update');
+Route::post('/users/{id}/comments',[CommentController::class, 'store'])->name('comments.store');
 Route::get('/users/{id}/comments',[CommentController::class, 'index'])->name('comments.index');
 
 Route::put('/users/{id}',[UserController::class, 'update'])->name('users.update');
