@@ -6,7 +6,7 @@
 
 
 @section('content')
-<h1>Novo usuários </h1>
+<h1 class="text-2xl font-semibold leading-tigh py-2">Novo usuários </h1>
     @include('includes.validation-form')
 <form action="{{route('users.store')}}" method="post">
     @include('users._partials.form')

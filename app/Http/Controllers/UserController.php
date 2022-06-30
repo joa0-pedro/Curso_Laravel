@@ -19,14 +19,17 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $users = $this->model
-                        ->getUsers(
-                            search: $request->search
-                         );
-        
-        return view('users.index', compact('users'));
 
-        return view('users.index');
+        $search = $request->search;
+        $users = $this->model->where(function ($query) use($search) {
+            if ($search){
+            $query->where('email',$search);
+            $query->orWhere('name','LIKE',"%{$search}%");
+            }
+        })->get();
+
+
+        return view('users.index',compact('users'));
     }
     public function show($id)
     {
@@ -65,7 +68,6 @@ class UserController extends Controller
         if (!$user = $this->model->find($id)){
             return redirect()->route('users.index');
         }
-
         $data = $request->only('name', 'email');
         
         if($request->password){ 
@@ -75,8 +77,7 @@ class UserController extends Controller
         $user->update($data);
 
         return redirect()->route('users.index');
-        }
-        // return redirect()->route('users.index');
+    }
         
         
     }
