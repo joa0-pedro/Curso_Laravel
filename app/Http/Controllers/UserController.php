@@ -41,7 +41,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store (StoreUpdateUserFormRequest $request, $id)
+    public function store (StoreUpdateUserFormRequest $request)
     {
 
         $data = $request->all();
@@ -68,7 +68,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
 
     }
-    public function update(UpdateUserFormRequest $request, $id)
+    public function update(StoreUpdateUserFormRequest $request, $id)
     {
         if (!$user = $this->model->find($id)){
             return redirect()->route('users.index');
@@ -80,13 +80,11 @@ class UserController extends Controller
         }
 
         if($request->image){
-            if(Storage::exists($user->image)){
+            if($user->image && Storage::exists($user->image)){
                 Storage::delete($user->image);
             }
+            $data['image'] = $request->image->store('users');
         }
-            // dd($request->image);
-        $data['image'] = $request->image->store('images');
-
         $user->update($data);
 
         return redirect()->route('users.index');

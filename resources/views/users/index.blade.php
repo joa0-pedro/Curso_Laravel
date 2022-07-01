@@ -50,7 +50,7 @@
             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
               @if ($user->image) 
   
-                <img src="{{ url("public.images/{$user->image}") }}" alt="{{ $user->name}}" class="object-cover w-20">
+                <img src="{{ url("storage/{$user->image}") }}" alt="{{ $user->name}}" class="object-cover w-20">
               @else
                 <img src="{{ url("images/Fav.ico") }}" alt="{{ $user->name}}" class="object-cover w-20">
 
