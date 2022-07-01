@@ -23,28 +23,19 @@ class CreateUserFormRequest extends FormRequest
      */
     public function rules()
     {
-
-        $id = $this -> id ?? '';
-
-        $rules = [
-            'name' => [
-            'required',
-            'string', 
-            'max:255',
-            'min:3',
+        return [
+            'body' =>[
+             'required',
+             'min:3',
+             'max:999',
             ],
-            'email' => [
-            'required',
-            'email',
-            "unique:users,email,{$id},id",
+
+            'image' =>[
+                'nullable',
+                'image',
+                'max:1024'
             ],
-            'password' => [
-                'required',
-                'min:6',
-                'max:15',
-            ], 
+            
         ];
-
-        return $rules;
     }
 }

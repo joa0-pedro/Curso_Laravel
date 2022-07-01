@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -52,7 +53,7 @@ class User extends Authenticatable
             
         })
         ->with('comments')
-        ->get();
+        ->paginate();
 
         return $users;
     }

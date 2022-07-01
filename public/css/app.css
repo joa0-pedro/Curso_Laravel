@@ -786,3 +786,10 @@ video {
     padding-right: 2rem;
   }
 }
+
+@centralizar{
+
+  .centralizar {
+    justify-content: center;
+  }
+}
